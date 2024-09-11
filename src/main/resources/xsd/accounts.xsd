@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.micda.com/bankapi/schemas"
+           xmlns:tns="http://www.micda.com/bankapi/schemas"
+           elementFormDefault="qualified">
+
+    <xs:element name="getBalanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accountId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBalanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="balance" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Définition de la requête pour getTransactions -->
+    <xs:element name="getTransactionsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accountId" type="xs:long"/>
+                <xs:element name="pageNumber" type="xs:int"/>
+                <xs:element name="pageSize" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTransactionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transactions" type="tns:TransactionList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Définition des transactions -->
+    <xs:complexType name="Transaction">
+        <xs:sequence>
+            <xs:element name="transactionId" type="xs:long"/>
+            <xs:element name="date" type="xs:dateTime"/>
+            <xs:element name="amount" type="xs:double"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TransactionList">
+        <xs:sequence>
+            <xs:element name="transaction" type="tns:Transaction" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
