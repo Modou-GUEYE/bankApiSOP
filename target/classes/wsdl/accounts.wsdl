@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://www.example.com/soap"
+                  xmlns="http://www.example.com/soap">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.example.com/soap">
+            <xsd:element name="getBalanceRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="accountId" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="getBalanceResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="balance" type="xsd:decimal"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            
+            <xsd:element name="getTransactionsRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="accountId" type="xsd:string"/>
+                        <xsd:element name="pageNumber" type="xsd:int"/>
+                        <xsd:element name="pageSize" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="getTransactionsResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="transactionId" type="xsd:string"/>
+                        <xsd:element name="type" type="xsd:string"/>
+                        <xsd:element name="amount" type="xsd:decimal"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    
+    <!-- Définition des opérations : getBalance, getTransactions, transferFunds -->
+</wsdl:definitions>
